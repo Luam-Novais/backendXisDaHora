@@ -211,7 +211,6 @@ app.post("/admin/functions", authMiddleware, isAdmin, upload.single('imagem'), a
     if(categoria === "hamburguer"){
 
         const novoHamburguer = await Hamburguer.create({
-
             nome,
             ingredientes,
             valor,
@@ -235,7 +234,6 @@ app.post("/admin/functions", authMiddleware, isAdmin, upload.single('imagem'), a
     } else if(categoria === "sobremesas"){
 
         const novaSobremesa = await Sobremesas.create({
-
             nome,
             ingredientes,
             valor,
