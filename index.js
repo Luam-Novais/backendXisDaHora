@@ -325,6 +325,11 @@ app.get("/auth/validar-token", authMiddleware, async (req, res) => {
         return res.status(500).json({ message: "Erro ao validar token" })
     }
 })
+const { sequelize } = require("./models/db") // <-- isso aqui importa o Sequelize já conectado
+
+sequelize.sync({ alter: true }) // <-- isso aqui cria as tabelas baseadas nos models
+  .then(() => console.log("✅ Tabelas sincronizadas com o banco"))
+  .catch((err) => console.error("❌ Erro ao sincronizar tabelas:", err));
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () =>{
